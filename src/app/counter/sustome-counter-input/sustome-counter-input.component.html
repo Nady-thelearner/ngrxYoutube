@@ -1,0 +1,14 @@
+<div class="col-md-12">
+  <div class="my-5">
+
+    <input type="text" name="Enter" placeholder="Enter here....." [(ngModel)]="value">
+    <button class="btn btn-primary" (click)="Add()">Submit</button>
+
+
+  </div>
+
+  <div class="my-3">
+    <p>This is :{{ (name$ | async) }}</p>
+<button class="btn btn-primary" (click)="updateName()">Update Name</button>
+  </div>
+</div>

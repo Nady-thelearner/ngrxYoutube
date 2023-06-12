@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">NGRX</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto" [class.readonly]="isLoading">
+      <li class="nav-item active" *ngIf="authenticated">
+        <a class="nav-link" [routerLink]="['/']"
+          >Home
+          <span
+            ><i class="pi pi-spin pi-desktop" style="color: #9debaa"></i
+          ></span>
+        </a>
+      </li>
+
+      <li class="nav-item active" *ngIf="authenticated">
+        <a class="nav-link" [routerLink]="['/counter']"
+          >Counter
+          <span><i class="pi pi-cart-plus" style="color: #9debaa"></i></span>
+        </a>
+      </li>
+
+      <li class="nav-item active" *ngIf="authenticated">
+        <a class="nav-link" [routerLink]="['/posts']"
+          >Posts
+          <span><i class="pi pi-camera" style="color: #9debaa"></i></span>
+        </a>
+      </li>
+
+      <li class="nav-item active" *ngIf="!authenticated">
+        <a class="nav-link" [routerLink]="['/auth']"
+          >{{ isLoginClckd ? "Login" : "Sign-Up" }}
+          <span><i class="pi pi-lock-open" style="color: #9debaa"></i></span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <button
+    type="button"
+    class="btn btn-warning"
+    [routerLink]="['/auth']"
+    *ngIf="authenticated"
+    (click)="onLogout()"
+  >
+    <span><i class="pi pi-lock" style="color: #9debaa"></i></span>
+  </button>
+</nav>
+<!-- <a class="nav-link" [routerLink]="['/auth']" *ngIf="authenticated"
+      >
+      <span><i class="pi pi-lock" style="color: #9debaa"></i></span>
+    </a> -->

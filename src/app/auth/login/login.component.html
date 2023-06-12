@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <h3>{{ loginClck ? "Login" : "Sign-Up" }}</h3>
+    <hr />
+    <form [formGroup]="loginform">
+      <div class="mb-3">
+        <label>Email</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="email"
+          [ngClass]="{
+            'invalid-input':
+              loginform.controls['email'].invalid &&
+              loginform.controls['email'].touched
+          }"
+
+        />
+        <div>{{ emailError() }}</div>
+      </div>
+
+      <div class="mb-3">
+        <label>Password</label>
+        <input
+          type="password"
+          class="form-control"
+          formControlName="password"
+          [ngClass]="{
+            'invalid-input':
+              loginform.controls['password'].invalid &&
+              loginform.controls['password'].touched
+          }"
+        />
+      </div>
+      <div>{{ password() }}</div>
+
+      <div class="mb-3">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="!loginform.valid"
+          (click)="OnformSubmit()"
+        >
+          {{ loginClck ? "Login" : "Sign-Up" }}
+        </button>
+
+        <button class="btn btn-primary" type="button" (click)="onSwitchMode()">
+          Switch To : {{ loginClck ? "Sign-Up" : "Login" }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- {{ (loginClk$ | async).islogin ? "Login" : "Sign-Up" }} -->
+
+<!-- <input type="text" [ngClass]="{ 'invalid-input': myForm.controls.myControlName.invalid && myForm.controls.myControlName.touched }" formControlName="myControlName">
+ -->
