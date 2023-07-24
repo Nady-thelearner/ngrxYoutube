@@ -7,10 +7,12 @@ export interface PostState {
 }
 
 export const initialState: PostState = {
-  posts: [
-    { id: '1', title: 'teest 1', description: 'this is post' },
-    { id: '2', title: 'teest 2', description: 'this is Another post' },
-  ],
+  posts: null,
   isClicked: true,
   updClicked: false,
 };
+
+// posts: [
+//   { id: '1', title: 'teest 1', description: 'this is post' },
+//   { id: '2', title: 'teest 2', description: 'this is Another post' },
+// ],

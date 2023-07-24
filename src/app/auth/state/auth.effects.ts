@@ -2,10 +2,19 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 
 import { catchError, exhaustMap, map, of, throwError } from 'rxjs';
 import { AuthService } from 'src/app/service/auth.service';
-import { loginStart, loginSuccess, signUpStart } from './auth.action';
+import {
+  loginClicked,
+  loginStart,
+  loginSuccess,
+  signUpStart,
+} from './auth.action';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { setErrorMsg, setLoadingSpinner } from 'src/app/store/shared.action';
+import {
+  setErrorMsg,
+  setLoadingSpinner,
+  setSuccessMsg,
+} from 'src/app/store/shared.action';
 import { AppState } from 'src/app/store/app.state';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -53,6 +62,15 @@ export class AuthEffects {
         console.log('Auth Effects called', action);
         return this.AuthSF.signup(action.email, action.password).pipe(
           map((data) => {
+            this.store.dispatch(setLoadingSpinner({ status: false }));
+            this.store.dispatch(
+              setSuccessMsg({
+                message: 'Sign-up Successfull , Please Login to continue.',
+              })
+            );
+            this.route.navigate(['/auth']);
+            this.store.dispatch(loginClicked());
+
             return loginSuccess(null);
           }),
           catchError((err) => {

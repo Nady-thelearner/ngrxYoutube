@@ -1,4 +1,4 @@
 export const enviroment = {
   production: false,
-  API_KEY: 'AIzaSyCx235VeEHSVQI9UVRXX0k6c6VvIeG-Slw',
+  API_KEY: 'AIzaSyDfuXOFOSqUgudnC_zC6XtJIvzw25uGIhk',
 };

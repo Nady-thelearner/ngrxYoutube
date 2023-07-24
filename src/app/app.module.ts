@@ -25,6 +25,9 @@ import { AuthModule } from './auth/auth.module';
 
 import { AddPostComponent } from './posts/add-post/add-post.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
+import { PostEffects } from './posts/state/post.effects';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { CustomSerializer } from './store/router/custom-serialize';
 
 @NgModule({
   declarations: [
@@ -59,7 +62,8 @@ import { SpinnerComponent } from './shared/spinner/spinner.component';
       trace: false, //  If set to true, will include stack trace for every dispatched action, so you can see it in trace tab jumping directly to that part of code
       traceLimit: 75, // maximum stack trace frames to be stored (in case trace option was provided as true)
     }),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([PostEffects]),
+    StoreRouterConnectingModule.forRoot({ serializer: CustomSerializer }),
   ],
   providers: [],
   bootstrap: [AppComponent],

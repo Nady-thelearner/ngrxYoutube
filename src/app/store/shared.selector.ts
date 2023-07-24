@@ -19,3 +19,8 @@ export const getErrorMessage = createSelector(
   getSharedState,
   (state) => state.errorMessage
 );
+
+export const getSuccessMessage = createSelector(
+  getSharedState,
+  (state) => state.successMessage
+);

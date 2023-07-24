@@ -18,7 +18,6 @@ export const canActivate: CanActivateFn = (
   const router = inject(Router);
   return store.select(getUser).pipe(
     map((user) => {
-      console.log('Guard called', user);
       if (user != null) {
         console.log('Guard called', user);
         return true;

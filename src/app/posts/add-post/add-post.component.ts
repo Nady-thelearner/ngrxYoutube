@@ -37,7 +37,10 @@ export class AddPostComponent implements OnInit, OnDestroy {
       .subscribe((data) => (this.isClicked = data));
     this.updBtnSubs = this.store
       .select(updateButtonClicked)
-      .subscribe((data) => (this.updClicked = data));
+      .subscribe((data) => {
+        this.updClicked = data;
+        console.log('update in post add comp triggeered', this.updClicked);
+      });
 
     this.postForm = new FormGroup({
       title: new FormControl(null, [Validators.minLength(6)]),
@@ -48,13 +51,15 @@ export class AddPostComponent implements OnInit, OnDestroy {
     });
 
     if (this.updClicked) {
-      // console.log('Update clicked')
       this.routeSubs = this.route.paramMap.subscribe((params) => {
         this.id = params.get('id');
-
+        console.log('Update clicked', this.id);
         this.storeSubs = this.store
-          .select(getPostbyID(+this.id))
-          .subscribe((data) => this.postForm.patchValue(data));
+          .select(getPostbyID(this.id))
+          .subscribe((data) => {
+            console.log('update data', data);
+            this.postForm.patchValue(data);
+          });
       });
     }
   }
@@ -96,6 +101,7 @@ export class AddPostComponent implements OnInit, OnDestroy {
       description: this.postForm.value.description,
     };
     if (this.isClicked) {
+      console.log('ellox  ');
       this.store.dispatch(addPost({ post }));
       this.postForm.reset();
     }
@@ -104,8 +110,6 @@ export class AddPostComponent implements OnInit, OnDestroy {
       this.store.dispatch(updatePost({ post }));
       this.postForm.reset();
     }
-
-
   }
 
   ngOnDestroy(): void {

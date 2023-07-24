@@ -5,20 +5,10 @@ const getPostsState = createFeatureSelector<PostState>('posts');
 
 export const getPosts = createSelector(getPostsState, (state) => state.posts);
 
-// export const getPostbyID = createSelector(
-//   getPostsState,
-//   (state, props) => {state.posts.find((post)=> post.id === props.id)}
-// );
-
-export const getPostbyID = (id: number) =>
+export const getPostbyID = (id: string) =>
   createSelector(getPostsState, (state: PostState) =>
-    state.posts.find((post) => +post.id === id)
+    state.posts.find((post) => post.id === id)
   );
-
-// export const getPostbyID = (props :{id}) => createSelector(
-//   (state) => state.posts[props.id],
-
-//   )
 
 export const getButtonClicked = createSelector(
   getPostsState,

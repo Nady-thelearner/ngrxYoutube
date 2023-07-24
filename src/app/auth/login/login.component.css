@@ -25,3 +25,6 @@ input:invalid {
   border-color: rgb(30, 139, 20);
 }
 
+#buttonDyno {
+  margin-right: 5 px;
+}

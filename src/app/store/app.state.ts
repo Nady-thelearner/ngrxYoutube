@@ -7,12 +7,14 @@ import { PostState } from '../posts/state/posts.state';
 import { SharedReducer } from './shared.reducer';
 import { SHARED_STATE_NAME } from './shared.selector';
 import { sharedState } from './shared.state';
+import { RouterReducerState, routerReducer } from '@ngrx/router-store';
 
 export interface AppState {
   counter: CounterState;
   posts: PostState;
   auth: AuthState;
   [SHARED_STATE_NAME]: sharedState;
+  router: RouterReducerState;
 }
 
 export const appReducer = {
@@ -20,4 +22,5 @@ export const appReducer = {
   posts: postReducer,
   auth: AuthReducer,
   [SHARED_STATE_NAME]: SharedReducer,
+  router: routerReducer,
 };

@@ -3,11 +3,28 @@
 <div class="container" *ngIf="!isLoading">
   <div class="row">
     <div class="col-md-12">
-      <div class="alert alert-danger" *ngIf="this.error">
-
+      <div class="alert alert-danger" *ngIf="error">
         {{ this.error }}
 
-        <span ><i class="pi pi-times" style="color: #f5f7f5" (click)="onIconClick()"></i></span>
+        <span
+          ><i
+            class="pi pi-times"
+            style="color: #f5f7f5"
+            (click)="onIconClick()"
+          ></i
+        ></span>
+      </div>
+
+      <div class="alert1 alert-success" *ngIf="alert">
+        {{ this.success }}
+
+        <span
+          ><i
+            class="pi pi-times"
+            style="color: #f5f7f5"
+            (click)="onIconClick()"
+          ></i
+        ></span>
       </div>
       <router-outlet></router-outlet>
       <!-- <app-counter></app-counter> -->

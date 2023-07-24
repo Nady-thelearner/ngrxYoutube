@@ -1,1 +1,9 @@
-<p>home works!</p>
+<div *ngIf="articles">
+  <h2>Articles: From NDTV</h2>
+  <ul id="myList">
+    <li *ngFor="let article of articles">
+      <img src="{{ article.imgSrc }}" />
+      <a target="_blank" href="{{ article.url }}">{{ article.title }}</a>
+    </li>
+  </ul>
+</div>

@@ -1,7 +1,12 @@
 import { state } from '@angular/animations';
 import { createAction, createReducer, on } from '@ngrx/store';
 import { initialState } from './shared.state';
-import { setAuth, setErrorMsg, setLoadingSpinner } from './shared.action';
+import {
+  setAuth,
+  setErrorMsg,
+  setLoadingSpinner,
+  setSuccessMsg,
+} from './shared.action';
 
 const _sharedReducer = createReducer(
   initialState,
@@ -21,6 +26,12 @@ const _sharedReducer = createReducer(
     return {
       ...state,
       errorMessage: action.message,
+    };
+  }),
+  on(setSuccessMsg, (state, action) => {
+    return {
+      ...state,
+      successMessage: action.message,
     };
   })
 );
