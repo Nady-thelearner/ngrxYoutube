@@ -38,6 +38,13 @@ export class PostStorageService {
     );
   }
 
+  getPostById(id: string): Observable<Posts> {
+    console.log('getPost triggered', id);
+    return this.http.get<Posts>(
+      `https://ngrx-y-default-rtdb.firebaseio.com/post/${id}.json`
+    );
+  }
+
   fetchPosts(): Observable<Posts[]> {
     return this.http
       .get('https://ngrx-y-default-rtdb.firebaseio.com/post.json')

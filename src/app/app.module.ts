@@ -28,6 +28,7 @@ import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { PostEffects } from './posts/state/post.effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { CustomSerializer } from './store/router/custom-serialize';
+import { SinglePostComponent } from './posts/single-post/single-post.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { CustomSerializer } from './store/router/custom-serialize';
     AddPostComponent,
     LoginComponent,
     SpinnerComponent,
+    SinglePostComponent,
   ],
   imports: [
     BrowserModule,

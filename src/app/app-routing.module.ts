@@ -7,6 +7,7 @@ import { PostsListComponent } from './posts/posts-list/posts-list.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AddPostComponent } from './posts/add-post/add-post.component';
 import { canActivate } from './auth/auth.guard';
+import { SinglePostComponent } from './posts/single-post/single-post.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [canActivate] },
@@ -19,6 +20,11 @@ const routes: Routes = [
       { path: 'add', component: AddPostComponent },
       { path: 'edit/:id', component: AddPostComponent },
     ],
+  },
+  {
+    path: 'posts/details/:id',
+    component: SinglePostComponent,
+    canActivate: [canActivate],
   },
   {
     path: 'auth',

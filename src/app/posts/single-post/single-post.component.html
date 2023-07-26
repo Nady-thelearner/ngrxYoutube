@@ -1,0 +1,11 @@
+<div class="post-details-wrapper">
+  <div class="futuristic-header">PostDetails</div>
+
+  <div *ngIf="post | async as postData" class="post-details-container">
+    <div class="detail-item">Id: <span class="detail-value">{{ postData.id }}</span></div>
+    <div class="detail-item">Title: <span class="detail-value">{{ postData.title }}</span></div>
+    <div class="detail-item">Description: <span class="detail-value">{{ postData.description }}</span></div>
+  </div>
+
+  <div class="back-to-posts"><a [routerLink]="['/posts']">Back to Post</a></div>
+</div>

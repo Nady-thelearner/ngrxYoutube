@@ -51,16 +51,25 @@ export class AddPostComponent implements OnInit, OnDestroy {
     });
 
     if (this.updClicked) {
-      this.routeSubs = this.route.paramMap.subscribe((params) => {
-        this.id = params.get('id');
-        console.log('Update clicked', this.id);
-        this.storeSubs = this.store
-          .select(getPostbyID(this.id))
-          .subscribe((data) => {
-            console.log('update data', data);
-            this.postForm.patchValue(data);
-          });
-      });
+
+      console.log('Update clicked', this.id);
+      this.storeSubs = this.store
+        .select(getPostbyID)
+        .subscribe((data) => {
+          console.log('update data', data);
+          this.postForm.patchValue(data);
+        });
+
+      // this.routeSubs = this.route.paramMap.subscribe((params) => {
+      //   // this.id = params.get('id');
+      //   console.log('Update clicked', this.id);
+      //   this.storeSubs = this.store
+      //     .select(getPostbyID)
+      //     .subscribe((data) => {
+      //       console.log('update data', data);
+      //       this.postForm.patchValue(data);
+      //     });
+      // });
     }
   }
 
